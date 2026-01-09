@@ -1,3 +1,6 @@
+import 'package:first_flutter_demo/widget/image/BlendModeImage.dart';
+import 'package:first_flutter_demo/widget/image/LoadImageDemo.dart';
+import 'package:first_flutter_demo/widget/text/TextDemo.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_demo/model/demo_item.dart';
 import 'package:first_flutter_demo/widget/animation/FadeAnimation.dart';
@@ -12,6 +15,24 @@ class DemoListPage extends StatelessWidget {
       icon: Icons.animation,
       builder: () => const FadeAnimation(),
       routeName: '/fade-animation',
+    ),
+    DemoItem(
+      title: '文字',
+      description: 'Flutter绘制text',
+      icon: Icons.text_decrease,
+      builder: () => const TextDemo(),
+    ),
+    DemoItem(
+      title: '图片加载',
+      description: 'Flutter加载图片相关',
+      icon: Icons.image,
+      builder: () => const LoadImageDemo(),
+    ),
+    DemoItem(
+      title: '图片混合模式',
+      description: 'Flutter混合模式相关',
+      icon: Icons.image,
+      builder: () => const BlendModeImage(),
     ),
   ];
 
