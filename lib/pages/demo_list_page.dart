@@ -1,6 +1,9 @@
+import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
+import 'package:first_flutter_demo/widget/image/AlignmentImage.dart';
 import 'package:first_flutter_demo/widget/image/BlendModeImage.dart';
 import 'package:first_flutter_demo/widget/image/LoadImageDemo.dart';
 import 'package:first_flutter_demo/widget/text/TextDemo.dart';
+import 'package:first_flutter_demo/widget/text/TextDemo1.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_demo/model/demo_item.dart';
 import 'package:first_flutter_demo/widget/animation/FadeAnimation.dart';
@@ -20,7 +23,7 @@ class DemoListPage extends StatelessWidget {
       title: '文字',
       description: 'Flutter绘制text',
       icon: Icons.text_decrease,
-      builder: () => const TextDemo(),
+      builder: () => const Textdemo1(),
     ),
     DemoItem(
       title: '图片加载',
@@ -33,6 +36,18 @@ class DemoListPage extends StatelessWidget {
       description: 'Flutter混合模式相关',
       icon: Icons.image,
       builder: () => const BlendModeImage(),
+    ),
+    DemoItem(
+      title: '图片位置',
+      description: 'Flutter aligment相关',
+      icon: Icons.image,
+      builder: () => const Alignmentimage(),
+    ),
+    DemoItem(
+      title: 'Container模块',
+      description: 'Flutter container相关',
+      icon: Icons.layers_outlined,
+      builder: () => const Customcontainer(),
     ),
   ];
 

@@ -1,8 +1,15 @@
+import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_demo/pages/demo_list_page.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight
+  ]); //使设备横屏
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);//全屏
+  runApp(const Paper());
 }
 
 class MyApp extends StatelessWidget {
