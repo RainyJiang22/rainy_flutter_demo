@@ -2,11 +2,12 @@ import 'package:first_flutter_demo/lifecycle/LifecycleWatcher.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
+import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
 import 'package:first_flutter_demo/widget/image/AlignmentImage.dart';
 import 'package:first_flutter_demo/widget/image/BlendModeImage.dart';
 import 'package:first_flutter_demo/widget/image/LoadImageDemo.dart';
-import 'package:first_flutter_demo/widget/text/TextDemo.dart';
+import 'package:first_flutter_demo/widget/list/ListDemo.dart';
 import 'package:first_flutter_demo/widget/text/TextDemo1.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_demo/model/demo_item.dart';
@@ -22,6 +23,12 @@ class DemoListPage extends StatelessWidget {
       icon: Icons.animation,
       builder: () => const FadeAnimation(),
       routeName: '/fade-animation',
+    ),
+    DemoItem(
+      title: '双击旋转动画',
+      description: '演示Flutter的TransTransition动画效果',
+      icon: Icons.animation,
+      builder: () => const GestureDemo(),
     ),
     DemoItem(
       title: '文字',
@@ -51,7 +58,7 @@ class DemoListPage extends StatelessWidget {
       title: 'Container模块',
       description: 'Flutter container相关',
       icon: Icons.layers_outlined,
-      builder: () => const Customcontainer(),
+      builder: () => const CustomContainer(),
     ),
 
     DemoItem(
@@ -77,6 +84,13 @@ class DemoListPage extends StatelessWidget {
       description: 'Flutter Lifecycle相关',
       icon: Icons.motorcycle,
       builder: () => const LifecycleWatcher(),
+    ),
+
+    DemoItem(
+      title: 'ListView demo',
+      description: 'Flutter ListView列表相关',
+      icon: Icons.list,
+      builder: () => const ListDemo(),
     ),
   ];
 
