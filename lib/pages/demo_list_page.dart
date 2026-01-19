@@ -1,3 +1,4 @@
+import 'package:first_flutter_demo/paint/SignDemo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
 import 'package:first_flutter_demo/widget/image/AlignmentImage.dart';
 import 'package:first_flutter_demo/widget/image/BlendModeImage.dart';
@@ -48,6 +49,13 @@ class DemoListPage extends StatelessWidget {
       description: 'Flutter container相关',
       icon: Icons.layers_outlined,
       builder: () => const Customcontainer(),
+    ),
+
+    DemoItem(
+      title: '签名demo',
+      description: 'Flutter 绘制painter相关',
+      icon: Icons.layers_outlined,
+      builder: () => const SignatureDemo(),
     ),
   ];
 

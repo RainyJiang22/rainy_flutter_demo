@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight
-  ]); //使设备横屏
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight
+  // ]); //使设备横屏
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);//全屏
-  runApp(const Paper());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
