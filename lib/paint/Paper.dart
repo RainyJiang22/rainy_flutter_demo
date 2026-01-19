@@ -31,7 +31,9 @@ class PaperPainter extends CustomPainter {
     // canvas.drawPath(path, paint..color = Colors.red);
 
     //drawIsAntiAliasColor(canvas);
-    drawStyleStrokeWidth(canvas);
+    // drawStyleStrokeWidth(canvas);
+    //drawStrokeCap(canvas);
+    drawStrokeJoin(canvas);
   }
 
   @override
@@ -76,4 +78,54 @@ class PaperPainter extends CustomPainter {
         ..style = PaintingStyle.fill,
     );
   }
+
+  //线帽类型strokecap
+  //StrokeCap.butt 不出头，round 圆头， square 方头
+  void drawStrokeCap(Canvas canvas) {
+    Paint paint =  Paint();
+    paint
+      ..style = PaintingStyle.stroke
+      ..color = Colors.blue
+      ..strokeWidth = 20;
+    canvas.drawLine(
+        Offset(50, 50), Offset(50, 150), paint..strokeCap = StrokeCap.butt);
+    canvas.drawLine(Offset(50 + 50.0, 50), Offset(50 + 50.0, 150),
+        paint..strokeCap = StrokeCap.round);
+    canvas.drawLine(Offset(50 + 50.0 * 2, 50), Offset(50 + 50.0 * 2, 150),
+        paint..strokeCap = StrokeCap.square);
+  }
+
+  //线接类型strokeJoin
+  void drawStrokeJoin(Canvas canvas) {
+    Paint paint =  Paint();
+    Path path =  Path();
+    paint
+      ..style = PaintingStyle.stroke
+      ..color = Colors.blue
+      ..strokeWidth = 20;
+    path.moveTo(50, 50);
+    path.lineTo(50, 150);
+    path.relativeLineTo(100, -50);
+    path.relativeLineTo(0, 100);
+    canvas.drawPath(path, paint..strokeJoin = StrokeJoin.bevel);
+
+    path.reset();
+    path.moveTo(50 + 150.0, 50);
+    path.lineTo(50 + 150.0, 150);
+    path.relativeLineTo(100, -50);
+    path.relativeLineTo(0, 100);
+    canvas.drawPath(path, paint..strokeJoin = StrokeJoin.miter);
+
+    path.reset();
+    path.moveTo(50 + 150.0 * 2, 50);
+    path.lineTo(50 + 150.0 * 2, 150);
+    path.relativeLineTo(100, -50);
+    path.relativeLineTo(0, 100);
+    canvas.drawPath(path, paint..strokeJoin = StrokeJoin.round);
+  }
+
+
+
+
+
 }

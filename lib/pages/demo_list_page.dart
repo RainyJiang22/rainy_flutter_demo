@@ -1,3 +1,5 @@
+import 'package:first_flutter_demo/network/SampleNetwork.dart';
+import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
 import 'package:first_flutter_demo/widget/image/AlignmentImage.dart';
@@ -52,10 +54,22 @@ class DemoListPage extends StatelessWidget {
     ),
 
     DemoItem(
+      title: '画笔属性',
+      description: 'Flutter认识画笔的属性',
+      icon: Icons.layers_outlined,
+      builder: () => const Paper(),
+    ),
+    DemoItem(
       title: '签名demo',
       description: 'Flutter 绘制painter相关',
-      icon: Icons.layers_outlined,
+      icon: Icons.signal_cellular_0_bar,
       builder: () => const SignatureDemo(),
+    ),
+    DemoItem(
+      title: '异步Ui demo',
+      description: 'Flutter 异步ui相关',
+      icon: Icons.network_cell,
+      builder: () => const SampleNetwork(),
     ),
   ];
 
