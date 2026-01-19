@@ -1,3 +1,4 @@
+import 'package:first_flutter_demo/lifecycle/LifecycleWatcher.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
@@ -70,6 +71,12 @@ class DemoListPage extends StatelessWidget {
       description: 'Flutter 异步ui相关',
       icon: Icons.network_cell,
       builder: () => const SampleNetwork(),
+    ),
+    DemoItem(
+      title: 'Lifecycle demo',
+      description: 'Flutter Lifecycle相关',
+      icon: Icons.motorcycle,
+      builder: () => const LifecycleWatcher(),
     ),
   ];
 
