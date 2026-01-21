@@ -82,23 +82,32 @@ class PaperPainter extends CustomPainter {
   //线帽类型strokecap
   //StrokeCap.butt 不出头，round 圆头， square 方头
   void drawStrokeCap(Canvas canvas) {
-    Paint paint =  Paint();
+    Paint paint = Paint();
     paint
       ..style = PaintingStyle.stroke
       ..color = Colors.blue
       ..strokeWidth = 20;
     canvas.drawLine(
-        Offset(50, 50), Offset(50, 150), paint..strokeCap = StrokeCap.butt);
-    canvas.drawLine(Offset(50 + 50.0, 50), Offset(50 + 50.0, 150),
-        paint..strokeCap = StrokeCap.round);
-    canvas.drawLine(Offset(50 + 50.0 * 2, 50), Offset(50 + 50.0 * 2, 150),
-        paint..strokeCap = StrokeCap.square);
+      Offset(50, 50),
+      Offset(50, 150),
+      paint..strokeCap = StrokeCap.butt,
+    );
+    canvas.drawLine(
+      Offset(50 + 50.0, 50),
+      Offset(50 + 50.0, 150),
+      paint..strokeCap = StrokeCap.round,
+    );
+    canvas.drawLine(
+      Offset(50 + 50.0 * 2, 50),
+      Offset(50 + 50.0 * 2, 150),
+      paint..strokeCap = StrokeCap.square,
+    );
   }
 
   //线接类型strokeJoin
   void drawStrokeJoin(Canvas canvas) {
-    Paint paint =  Paint();
-    Path path =  Path();
+    Paint paint = Paint();
+    Path path = Path();
     paint
       ..style = PaintingStyle.stroke
       ..color = Colors.blue
@@ -124,8 +133,30 @@ class PaperPainter extends CustomPainter {
     canvas.drawPath(path, paint..strokeJoin = StrokeJoin.round);
   }
 
-
-
+  //斜接限制
+  void drawStrokeMiterLimit(Canvas canvas) {
+    Paint paint = Paint();
+    Path path = Path();
+    paint
+      ..style = PaintingStyle.stroke
+      ..color = Colors.blue
+      ..strokeJoin = StrokeJoin.miter
+      ..strokeWidth = 20;
+    for (int i = 0; i < 4; i++) {
+      path.reset();
+      path.moveTo(50 + 150.0 * i, 50);
+      path.lineTo(50 + 150.0 * i, 150);
+      path.relativeLineTo(100, -(40.0 * i + 20));
+      canvas.drawPath(path, paint..strokeMiterLimit = 2);
+    }
+    for (int i = 0; i < 4; i++) {
+      path.reset();
+      path.moveTo(50 + 150.0 * i, 50 + 150.0);
+      path.lineTo(50 + 150.0 * i, 150 + 150.0);
+      path.relativeLineTo(100, -(40.0 * i + 20));
+      canvas.drawPath(path, paint..strokeMiterLimit = 3);
+    }
+  }
 
 
 }

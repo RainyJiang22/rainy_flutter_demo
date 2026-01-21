@@ -2,12 +2,16 @@ import 'package:first_flutter_demo/lifecycle/LifecycleWatcher.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
+import 'package:first_flutter_demo/widget/align/AlignDemo.dart';
 import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
+import 'package:first_flutter_demo/widget/flex/FlexDemo.dart';
+import 'package:first_flutter_demo/widget/flow/flow_demo.dart';
 import 'package:first_flutter_demo/widget/image/AlignmentImage.dart';
 import 'package:first_flutter_demo/widget/image/BlendModeImage.dart';
 import 'package:first_flutter_demo/widget/image/LoadImageDemo.dart';
 import 'package:first_flutter_demo/widget/list/ListDemo.dart';
+import 'package:first_flutter_demo/widget/stack/StackDemo.dart';
 import 'package:first_flutter_demo/widget/text/TextDemo1.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_demo/model/demo_item.dart';
@@ -55,13 +59,6 @@ class DemoListPage extends StatelessWidget {
       builder: () => const Alignmentimage(),
     ),
     DemoItem(
-      title: 'Container模块',
-      description: 'Flutter container相关',
-      icon: Icons.layers_outlined,
-      builder: () => const CustomContainer(),
-    ),
-
-    DemoItem(
       title: '画笔属性',
       description: 'Flutter认识画笔的属性',
       icon: Icons.layers_outlined,
@@ -91,6 +88,37 @@ class DemoListPage extends StatelessWidget {
       description: 'Flutter ListView列表相关',
       icon: Icons.list,
       builder: () => const ListDemo(),
+    ),
+    DemoItem(
+      title: 'Container模块',
+      description: 'Flutter container相关',
+      icon: Icons.layers_outlined,
+      builder: () => const CustomContainer(),
+    ),
+
+    DemoItem(
+      title: 'Align布局',
+      description: 'Flutter align相关',
+      icon: Icons.layers_outlined,
+      builder: () => const AlignDemo(),
+    ),
+    DemoItem(
+      title: 'Flex弹性布局',
+      description: 'Flutter flex相关',
+      icon: Icons.layers_outlined,
+      builder: () => const FlexDemo(),
+    ),
+    DemoItem(
+      title: '堆叠布局',
+      description: 'Flutter stack相关',
+      icon: Icons.layers_outlined,
+      builder: () => const StackDemo(),
+    ),
+    DemoItem(
+      title: '流式布局',
+      description: 'Flutter flow相关',
+      icon: Icons.layers_outlined,
+      builder: () => const FlowDemo(),
     ),
   ];
 
