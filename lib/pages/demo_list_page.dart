@@ -1,5 +1,6 @@
 import 'package:first_flutter_demo/lifecycle/LifecycleWatcher.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
+import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
 import 'package:first_flutter_demo/widget/align/AlignDemo.dart';
@@ -119,6 +120,12 @@ class DemoListPage extends StatelessWidget {
       description: 'Flutter flow相关',
       icon: Icons.layers_outlined,
       builder: () => const FlowDemo(),
+    ),
+    DemoItem(
+      title: '掘金首页练习',
+      description: 'Flutter布局练习实战',
+      icon: Icons.layers_outlined,
+      builder: () => const JuejinPageDemo(),
     ),
   ];
 
