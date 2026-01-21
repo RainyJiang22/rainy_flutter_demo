@@ -9,7 +9,7 @@ class JuejinPageDemo extends StatelessWidget {
       child: Container(
         color: Colors.white,
         child: Column(
-          children: [SearchBarWidget(), ContentWidget(), BottomBarWidget()]
+          children: [SearchBarWidget(), ContentWidget(), BottomBarWidget()],
         ),
       ),
     );
@@ -109,6 +109,7 @@ class _ContentWidgetState extends State<ContentWidget>
           children: [
             TabBar(
               isScrollable: true,
+              tabAlignment: TabAlignment.center,
               controller: _tabController,
               tabs: tabStrList.map((tabText) => Tab(text: tabText)).toList(),
             ),
@@ -140,13 +141,17 @@ class ContentListWidget extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              Text(
-                '一起学习flutter',
-                style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                  decoration: TextDecoration.none,
-                ),
+              Row(
+                children: [
+                  Text(
+                    '一起学习flutter',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                      decoration: TextDecoration.none,
+                    ),
+                  ),
+                ],
               ),
               Row(
                 children: [
@@ -162,13 +167,18 @@ class ContentListWidget extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
-              Expanded(
-                child: Text(
-                  "testtesttessssssssssssssssssssssssssssssssssssssssssssssss",
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 10.0),
-                ),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      "testtesttessssssssssssssssssssssssssssssssssssssssssssssss",
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 10.0),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 8),
               Row(
@@ -217,22 +227,28 @@ class BottomBarWidget extends StatefulWidget {
 }
 
 class _BottomBarWidgetState extends State<BottomBarWidget> {
+  int _position = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    if (_position < 0 || _position >= 5) {
+      _position = 0;
+    }
+  }
   @override
   Widget build(BuildContext context) {
-    int _position = 0;
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       onTap: (position) {
-        setState(() {
-          _position = position;
-        });
+        setState(() => _position = position);
       },
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.black,
-      showSelectedLabels: true,
-      showUnselectedLabels: true,
+      selectedItemColor: Colors.blue, // 选中时的颜色
+      unselectedItemColor: Colors.black,  // 未选中时的颜色
+      showSelectedLabels: true, // 选中的label是否展示
+      showUnselectedLabels: true, // 未选中的label是否展示
       currentIndex: _position,
-      items: [
+      items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
         BottomNavigationBarItem(icon: Icon(Icons.whatshot), label: '沸点'),
         BottomNavigationBarItem(icon: Icon(Icons.zoom_out), label: '发现'),

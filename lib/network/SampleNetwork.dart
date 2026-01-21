@@ -2,6 +2,8 @@
 
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
+import 'package:first_flutter_demo/network/DioHttp.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -34,6 +36,7 @@ class SampleNetworkPageState extends State<SampleNetworkPage> {
   void initState() {
     super.initState();
     loadData();
+    testDio(Dio());
   }
 
   @override
@@ -44,8 +47,8 @@ class SampleNetworkPageState extends State<SampleNetworkPage> {
         itemCount: widgets.length,
         itemBuilder: (context, position) {
           return getRow(position);
-        }
-      )
+        },
+      ),
     );
   }
 
