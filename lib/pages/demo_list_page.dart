@@ -3,6 +3,7 @@ import 'package:first_flutter_demo/network/SampleNetwork.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
+import 'package:first_flutter_demo/state/box_state_demo.dart';
 import 'package:first_flutter_demo/state/state_test_demo.dart';
 import 'package:first_flutter_demo/widget/align/AlignDemo.dart';
 import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
@@ -133,6 +134,12 @@ class DemoListPage extends StatelessWidget {
       description: 'State状态练习相关',
       icon: Icons.layers_sharp,
       builder: () => const CounterWidget(),
+    ),
+    DemoItem(
+      title: '状态管理',
+      description: '学习flutter状态管理',
+      icon: Icons.layers_sharp,
+      builder: () => const BoxStateDemo(),
     ),
   ];
 
