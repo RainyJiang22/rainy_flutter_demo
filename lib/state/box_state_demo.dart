@@ -7,8 +7,10 @@ class BoxStateDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
+    return MaterialApp(
+      title: "状态管理",
+      home: Container(
+        margin: EdgeInsets.only(top: 40),
         color: Colors.white,
         child: Column(
           children: [
