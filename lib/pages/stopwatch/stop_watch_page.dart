@@ -15,8 +15,9 @@ class StopWatchPage extends StatefulWidget {
 class _StopWatchPageState extends State<StopWatchPage> {
   StopWatchType _type = StopWatchType.none;
   Duration _duration = Duration.zero;
+  Duration _secondDuration = Duration.zero;
   late Ticker _ticker;
-  List<TimeRecord> _record = [];
+  final List<TimeRecord> _record = [];
 
   @override
   void initState() {
@@ -31,6 +32,9 @@ class _StopWatchPageState extends State<StopWatchPage> {
     setState(() {
       dt = elasped - lastDuration;
       _duration += dt;
+      if (_record.isNotEmpty) {
+        _secondDuration = _duration - _record.last.record;
+      }
       lastDuration = elasped;
     });
   }
@@ -83,7 +87,11 @@ class _StopWatchPageState extends State<StopWatchPage> {
   Widget buildStopWatchPanel() {
     //MediaQuery.size 获取屏幕尺寸
     double radius = MediaQuery.of(context).size.width / 2 * 0.75;
-    return StopwatchWidget(radius: radius, duration: _duration);
+    return StopwatchWidget(
+      radius: radius,
+      duration: _duration,
+      secondDuration: _secondDuration,
+    );
   }
 
   Widget buildRecordPanel() {
@@ -102,6 +110,7 @@ class _StopWatchPageState extends State<StopWatchPage> {
   void onReset() {
     setState(() {
       _duration = Duration.zero;
+      _secondDuration = Duration.zero;
       _type = StopWatchType.none;
       _record.clear();
     });

@@ -5,15 +5,19 @@ import 'package:flutter/material.dart';
 class StopwatchWidget extends StatelessWidget {
   final double radius;
   final Duration duration;
+  final Duration secondDuration;
   final Color? themeColor;
   final TextStyle? textStyle;
   final Color scaleColor;
+  final Color secondColor;
 
   const StopwatchWidget({
     super.key,
     required this.radius,
     required this.duration,
+    this.secondDuration = Duration.zero,
     this.scaleColor = const Color(0xffDADADA),
+    this.secondColor = const Color(0xff888888),
     this.textStyle,
     this.themeColor,
   });
@@ -33,8 +37,10 @@ class StopwatchWidget extends StatelessWidget {
       painter: StopwatchPainter(
         radius: radius,
         duration: duration,
+        secondDuration: secondDuration,
         themeColor: themeColor,
         scaleColor: scaleColor,
+        secondColor: secondColor,
         textStyle: style,
       ),
       size: Size(radius * 2, radius * 2),
@@ -48,15 +54,20 @@ const _kStrokeWidthRate = 0.8 / 135.0;
 
 class StopwatchPainter extends CustomPainter {
   final Duration duration;
+  final Duration secondDuration;
+
   final double radius;
   final Color themeColor;
   final Color scaleColor;
+  final Color secondColor;
   final TextStyle textStyle;
 
   StopwatchPainter({
     required this.duration,
+    required this.secondDuration,
     required this.themeColor,
     required this.scaleColor,
+    required this.secondColor,
     required this.radius,
     required this.textStyle,
   }) {
@@ -94,6 +105,9 @@ class StopwatchPainter extends CustomPainter {
     canvas.restore();
 
     drawText(canvas);
+    if (secondDuration != Duration.zero) {
+      drawSecondText(canvas);
+    }
   }
 
   void drawText(Canvas canvas) {
@@ -117,6 +131,29 @@ class StopwatchPainter extends CustomPainter {
     final double width = textPainter.size.width;
     final double height = textPainter.size.height;
     textPainter.paint(canvas, Offset(-width / 2, -height / 2));
+  }
+
+  void drawSecondText(Canvas canvas) {
+    int minus = secondDuration.inMinutes % 60;
+    int second = secondDuration.inSeconds % 60;
+    int milliseconds = secondDuration.inMilliseconds % 1000;
+    String commonStr =
+        '${minus.toString().padLeft(2, "0")}:${second.toString().padLeft(2, "0")}';
+    String highlightStr = ".${(milliseconds ~/ 10).toString().padLeft(2, "0")}";
+    textPainter.text = TextSpan(
+      text: commonStr + highlightStr,
+      style: textStyle.copyWith(
+        fontSize: textStyle.fontSize! / 3,
+        color: secondColor,
+      ),
+    );
+    textPainter.layout(); // 进行布局
+    final double width = textPainter.size.width;
+    final double height = textPainter.size.height;
+    textPainter.paint(
+      canvas,
+      Offset(-width / 2, -height / 2 + textStyle.fontSize! * 0.9),
+    );
   }
 
   void drawScale(Canvas canvas, Size size) {
