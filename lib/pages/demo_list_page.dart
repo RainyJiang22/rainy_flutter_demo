@@ -3,6 +3,7 @@ import 'package:first_flutter_demo/lifecycle/flutter_widget_lifecycle.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
 import 'package:first_flutter_demo/pages/launch_page.dart';
+import 'package:first_flutter_demo/pages/photo_app_page.dart';
 import 'package:first_flutter_demo/pages/stopwatch/stop_watch_app.dart';
 import 'package:first_flutter_demo/pages/stopwatch/stop_watch_page.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
@@ -163,6 +164,12 @@ class DemoListPage extends StatelessWidget {
       description: 'flutter使用url_launch打开第三方应用',
       icon: Icons.start,
       builder: () => const LaunchPageDemo(title: 'hello'),
+    ),
+    DemoItem(
+      title: 'Flutter拍照相册实例',
+      description: 'flutter使用image_picker进行拍照打开相册',
+      icon: Icons.photo,
+      builder: () => const PhotoAppPage(),
     ),
   ];
 
