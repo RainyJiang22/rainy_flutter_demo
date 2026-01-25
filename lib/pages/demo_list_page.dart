@@ -1,4 +1,5 @@
 import 'package:first_flutter_demo/lifecycle/LifecycleWatcher.dart';
+import 'package:first_flutter_demo/lifecycle/flutter_widget_lifecycle.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
 import 'package:first_flutter_demo/pages/launch_page.dart';
@@ -87,7 +88,7 @@ class DemoListPage extends StatelessWidget {
       title: 'Lifecycle demo',
       description: 'Flutter Lifecycle相关',
       icon: Icons.motorcycle,
-      builder: () => const LifecycleWatcher(),
+      builder: () => const FlutterWidgetLifecycle(),
     ),
 
     DemoItem(
