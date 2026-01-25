@@ -1,6 +1,8 @@
 import 'package:first_flutter_demo/lifecycle/LifecycleWatcher.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
+import 'package:first_flutter_demo/pages/stopwatch/stop_watch_app.dart';
+import 'package:first_flutter_demo/pages/stopwatch/stop_watch_page.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
 import 'package:first_flutter_demo/state/box_state_demo.dart';
@@ -140,6 +142,12 @@ class DemoListPage extends StatelessWidget {
       description: '学习flutter状态管理',
       icon: Icons.layers_sharp,
       builder: () => const BoxStateDemo(),
+    ),
+    DemoItem(
+      title: '秒表应用',
+      description: 'flutter简单秒表功能',
+      icon: Icons.layers_sharp,
+      builder: () => const StopWatchApp(),
     ),
   ];
 
