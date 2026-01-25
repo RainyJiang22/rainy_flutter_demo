@@ -1,6 +1,7 @@
 import 'package:first_flutter_demo/lifecycle/LifecycleWatcher.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
+import 'package:first_flutter_demo/pages/launch_page.dart';
 import 'package:first_flutter_demo/pages/stopwatch/stop_watch_app.dart';
 import 'package:first_flutter_demo/pages/stopwatch/stop_watch_page.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
@@ -17,6 +18,7 @@ import 'package:first_flutter_demo/widget/image/BlendModeImage.dart';
 import 'package:first_flutter_demo/widget/image/LoadImageDemo.dart';
 import 'package:first_flutter_demo/widget/list/ListDemo.dart';
 import 'package:first_flutter_demo/widget/stack/StackDemo.dart';
+import 'package:first_flutter_demo/widget/stateful/stateful_page_demo.dart';
 import 'package:first_flutter_demo/widget/text/TextDemo1.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_demo/model/demo_item.dart';
@@ -148,6 +150,18 @@ class DemoListPage extends StatelessWidget {
       description: 'flutter简单秒表功能',
       icon: Icons.layers_sharp,
       builder: () => const StopWatchApp(),
+    ),
+    DemoItem(
+      title: 'Flutter基础布局',
+      description: 'flutter StatefulWidget及其简单widget',
+      icon: Icons.layers_sharp,
+      builder: () => const StatefulPageDemo(),
+    ),
+    DemoItem(
+      title: 'Flutter打开第三方应用',
+      description: 'flutter使用url_launch打开第三方应用',
+      icon: Icons.start,
+      builder: () => const LaunchPageDemo(title: 'hello'),
     ),
   ];
 
