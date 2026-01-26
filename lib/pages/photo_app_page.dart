@@ -12,7 +12,7 @@ class PhotoAppPage extends StatefulWidget {
 
 class _PhotoAppPageState extends State<PhotoAppPage> {
   final ImagePicker _picker = ImagePicker();
-  List<XFile?> _imageFiles = [];
+  final List<XFile?> _imageFiles = [];
 
   Future<void> _pickPhoto(bool isTakePhoto) async {
     try {
@@ -43,7 +43,12 @@ class _PhotoAppPageState extends State<PhotoAppPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('ImagePicker实例')),
       body: Center(
-        child: Wrap(spacing: 5, runSpacing: 5, children: _getImageItems()),
+        child: Container(
+          color: Colors.white,
+          alignment: Alignment.center,
+          margin: EdgeInsets.all(6),
+          child: Wrap(spacing: 5, runSpacing: 5, children: _getImageItems()),
+        ),
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,

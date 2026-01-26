@@ -42,9 +42,9 @@ class ButtonTools extends StatelessWidget {
             ),
           FloatingActionButton(
             backgroundColor: Theme.of(context).primaryColor,
+            onPressed: toggle,
             child:
             running ? const Icon(Icons.stop) : const Icon(Icons.play_arrow),
-            onPressed: toggle,
           ),
           if (state != StopWatchType.none)
             GestureDetector(
