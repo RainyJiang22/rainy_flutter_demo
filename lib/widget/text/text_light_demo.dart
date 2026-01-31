@@ -50,6 +50,24 @@ class TextLightDemo extends StatelessWidget {
                     ],
                   ),
                 ),
+                Text('text defaultText'),
+                DefaultTextStyle(style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20.0,
+                ), child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("hello world"),
+                    Text("I am Jack"),
+                    Text("I am Jack",
+                      style: TextStyle(
+                          inherit: false, //2.不继承默认样式
+                          color: Colors.grey
+                      ),
+                    ),
+                    Text("I am Jacky Tallow for animation ")
+                  ],
+                ))
               ],
             ),
           ),

@@ -18,6 +18,7 @@ import 'package:first_flutter_demo/widget/flow/flow_demo.dart';
 import 'package:first_flutter_demo/widget/image/AlignmentImage.dart';
 import 'package:first_flutter_demo/widget/image/BlendModeImage.dart';
 import 'package:first_flutter_demo/widget/image/LoadImageDemo.dart';
+import 'package:first_flutter_demo/widget/image/image_scale_demo.dart';
 import 'package:first_flutter_demo/widget/list/ListDemo.dart';
 import 'package:first_flutter_demo/widget/stack/StackDemo.dart';
 import 'package:first_flutter_demo/widget/stateful/stateful_page_demo.dart';
@@ -170,6 +171,12 @@ class DemoListPage extends StatelessWidget {
       description: 'flutter使用image_picker进行拍照打开相册',
       icon: Icons.photo,
       builder: () => const PhotoAppPage(),
+    ),
+    DemoItem(
+      title: '图片缩放',
+      description: 'flutter图片缩放功能',
+      icon: Icons.scale,
+      builder: () => const ImageScaleDemo(),
     ),
   ];
 
