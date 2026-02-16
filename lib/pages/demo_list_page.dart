@@ -19,6 +19,7 @@ import 'package:first_flutter_demo/widget/image/AlignmentImage.dart';
 import 'package:first_flutter_demo/widget/image/BlendModeImage.dart';
 import 'package:first_flutter_demo/widget/image/LoadImageDemo.dart';
 import 'package:first_flutter_demo/widget/image/image_scale_demo.dart';
+import 'package:first_flutter_demo/widget/layout/responsive_column_demo.dart';
 import 'package:first_flutter_demo/widget/list/ListDemo.dart';
 import 'package:first_flutter_demo/widget/stack/StackDemo.dart';
 import 'package:first_flutter_demo/widget/stateful/stateful_page_demo.dart';
@@ -177,6 +178,12 @@ class DemoListPage extends StatelessWidget {
       description: 'flutter图片缩放功能',
       icon: Icons.scale,
       builder: () => const ImageScaleDemo(),
+    ),
+    DemoItem(
+      title: 'LayoutBuilder',
+      description: 'flutter LayoutBuilder',
+      icon: Icons.layers_clear_outlined,
+      builder: () => const LayoutBuilderRoute(),
     ),
   ];
 
