@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:first_flutter_demo/navigation/bottom_navigation_widget.dart';
 import 'package:first_flutter_demo/network/DioHttp.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DemoListPage(),
+      home: const BottomNavigationWidget(),
       debugShowCheckedModeBanner: false,
     );
   }
