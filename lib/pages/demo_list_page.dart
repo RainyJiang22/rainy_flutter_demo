@@ -13,6 +13,7 @@ import 'package:first_flutter_demo/state/state_test_demo.dart';
 import 'package:first_flutter_demo/widget/align/AlignDemo.dart';
 import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
+import 'package:first_flutter_demo/widget/expansion/expansion_tile_demo.dart';
 import 'package:first_flutter_demo/widget/flex/FlexDemo.dart';
 import 'package:first_flutter_demo/widget/flow/flow_demo.dart';
 import 'package:first_flutter_demo/widget/image/AlignmentImage.dart';
@@ -184,6 +185,12 @@ class DemoListPage extends StatelessWidget {
       description: 'flutter LayoutBuilder',
       icon: Icons.layers_clear_outlined,
       builder: () => const LayoutBuilderRoute(),
+    ),
+    DemoItem(
+      title: 'Expansion Demo',
+      description: 'flutter Expansion',
+      icon: Icons.layers_clear_outlined,
+      builder: () => const ExpansionTileDemo(),
     ),
   ];
 
