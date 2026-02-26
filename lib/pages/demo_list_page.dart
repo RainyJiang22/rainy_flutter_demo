@@ -13,6 +13,7 @@ import 'package:first_flutter_demo/state/state_test_demo.dart';
 import 'package:first_flutter_demo/widget/align/AlignDemo.dart';
 import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
+import 'package:first_flutter_demo/widget/container/container_demo.dart';
 import 'package:first_flutter_demo/widget/expansion/expansion_tile_demo.dart';
 import 'package:first_flutter_demo/widget/flex/FlexDemo.dart';
 import 'package:first_flutter_demo/widget/flow/flow_demo.dart';
@@ -25,6 +26,7 @@ import 'package:first_flutter_demo/widget/list/ListDemo.dart';
 import 'package:first_flutter_demo/widget/stack/StackDemo.dart';
 import 'package:first_flutter_demo/widget/stateful/stateful_page_demo.dart';
 import 'package:first_flutter_demo/widget/text/TextDemo1.dart';
+import 'package:first_flutter_demo/widget/transform/transform_demo.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_demo/model/demo_item.dart';
 import 'package:first_flutter_demo/widget/animation/FadeAnimation.dart';
@@ -191,6 +193,18 @@ class DemoListPage extends StatelessWidget {
       description: 'flutter Expansion',
       icon: Icons.layers_clear_outlined,
       builder: () => const ExpansionTileDemo(),
+    ),
+    DemoItem(
+      title: 'Transform平移 Demo',
+      description: 'flutter Transform',
+      icon: Icons.transform,
+      builder: () => const TransformDemo(),
+    ),
+    DemoItem(
+      title: 'Container Demo',
+      description: 'flutter Container',
+      icon: Icons.label,
+      builder: () => const ContainerDemo(),
     ),
   ];
 
