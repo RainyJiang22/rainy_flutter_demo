@@ -12,9 +12,11 @@ import 'package:first_flutter_demo/state/box_state_demo.dart';
 import 'package:first_flutter_demo/state/state_test_demo.dart';
 import 'package:first_flutter_demo/widget/align/AlignDemo.dart';
 import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
+import 'package:first_flutter_demo/widget/clip/clip_test_demo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
 import 'package:first_flutter_demo/widget/container/container_demo.dart';
 import 'package:first_flutter_demo/widget/expansion/expansion_tile_demo.dart';
+import 'package:first_flutter_demo/widget/fitbox/fitted_box_demo.dart';
 import 'package:first_flutter_demo/widget/flex/FlexDemo.dart';
 import 'package:first_flutter_demo/widget/flow/flow_demo.dart';
 import 'package:first_flutter_demo/widget/image/AlignmentImage.dart';
@@ -205,6 +207,18 @@ class DemoListPage extends StatelessWidget {
       description: 'flutter Container',
       icon: Icons.label,
       builder: () => const ContainerDemo(),
+    ),
+    DemoItem(
+      title: 'Clip Demo',
+      description: 'flutter Clip',
+      icon: Icons.shortcut_rounded,
+      builder: () => const ClipTestDemo(),
+    ),
+    DemoItem(
+      title: 'Fitted Fix Demo',
+      description: 'flutter Fitted Box',
+      icon: Icons.scale_sharp,
+      builder: () => const FittedBoxDemo(),
     ),
   ];
 
