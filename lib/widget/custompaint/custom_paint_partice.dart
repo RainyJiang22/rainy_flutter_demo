@@ -1,5 +1,11 @@
 import 'dart:ui';
 
+import 'package:first_flutter_demo/widget/custompaint/add_shape_painter.dart';
+import 'package:first_flutter_demo/widget/custompaint/arc_path_painter.dart';
+import 'package:first_flutter_demo/widget/custompaint/bezier_curve_painter.dart';
+import 'package:first_flutter_demo/widget/custompaint/path_basic_painter.dart';
+import 'package:first_flutter_demo/widget/custompaint/path_relative_painter.dart';
+import 'package:first_flutter_demo/widget/custompaint/star_painter.dart';
 import 'package:flutter/material.dart';
 
 class CustomPaintPracticePage extends StatelessWidget {
@@ -14,7 +20,7 @@ class CustomPaintPracticePage extends StatelessWidget {
           width: 300,
           height: 300,
           color: Colors.grey[200],
-          child: CustomPaint(painter: MyFirstPainter()),
+          child: CustomPaint(painter: StarPainter()),
         ),
       ),
     );
@@ -134,13 +140,12 @@ class MyFirstPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     final mouthRect = Rect.fromCenter(
-        center: Offset(center.dx, center.dy + 10),
-        width: 60,
-        height: 50
+      center: Offset(center.dx, center.dy + 10),
+      width: 60,
+      height: 50,
     );
 
     canvas.drawArc(mouthRect, 0.2, 2.7, false, mouthPaint);
-
   }
 
   @override

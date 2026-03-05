@@ -15,6 +15,7 @@ import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
 import 'package:first_flutter_demo/widget/clip/clip_test_demo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
 import 'package:first_flutter_demo/widget/container/container_demo.dart';
+import 'package:first_flutter_demo/widget/custompaint/arc_progress_demo.dart';
 import 'package:first_flutter_demo/widget/custompaint/custom_paint_partice.dart';
 import 'package:first_flutter_demo/widget/expansion/expansion_tile_demo.dart';
 import 'package:first_flutter_demo/widget/fitbox/fitted_box_demo.dart';
@@ -43,7 +44,7 @@ class DemoListPage extends StatelessWidget {
         title: '玩转flutter绘制',
         description: 'Flutter绘制',
         icon: Icons.format_paint,
-        builder: () => const CustomPaintPracticePage()
+        builder: () => const ArcProgressDemo()
     ),
     DemoItem(
       title: '淡入淡出动画',
