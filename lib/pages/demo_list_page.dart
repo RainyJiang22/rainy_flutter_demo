@@ -29,6 +29,7 @@ import 'package:first_flutter_demo/widget/stack/StackDemo.dart';
 import 'package:first_flutter_demo/widget/stateful/stateful_page_demo.dart';
 import 'package:first_flutter_demo/widget/text/TextDemo1.dart';
 import 'package:first_flutter_demo/widget/transform/transform_demo.dart';
+import 'package:first_flutter_demo/widget/wheel/customizable_wheel.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_demo/model/demo_item.dart';
 import 'package:first_flutter_demo/widget/animation/FadeAnimation.dart';
@@ -219,6 +220,12 @@ class DemoListPage extends StatelessWidget {
       description: 'flutter Fitted Box',
       icon: Icons.scale_sharp,
       builder: () => const FittedBoxDemo(),
+    ),
+    DemoItem(
+      title: '大转盘demo',
+      description: '幸运大转盘',
+      icon: Icons.pan_tool,
+      builder: () => const CustomizableWheelDemo()
     ),
   ];
 
