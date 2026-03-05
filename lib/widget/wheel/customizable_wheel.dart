@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 Widget showCustomWheel() {
   final sectors = [
-    WheelSector(content: Text('一等奖'), background: Colors.red),
-    WheelSector(content: Text('二等奖'), background: Colors.green),
-    WheelSector(content: Text('三等奖'), background: Colors.blue),
-    WheelSector(content: Text('四等奖'), background: Colors.grey),
-    WheelSector(content: Text('五等奖'), background: Colors.orange),
-    WheelSector(content: Text('六等奖'), background: Colors.lightBlue),
-    WheelSector(content: Text('幸运奖'), background: Colors.pinkAccent),
-    WheelSector(content: Text('安慰奖'), background: Colors.cyanAccent),
+    WheelSector(coins: 100, background: Colors.red),
+    WheelSector(coins: 200, background: Colors.green),
+    WheelSector(coins: 500, background: Colors.blue),
+    WheelSector(coins: 50, background: Colors.grey),
+    WheelSector(coins: 1000, background: Colors.orange),
+    WheelSector(coins: 300, background: Colors.lightBlue),
+    WheelSector(coins: 150, background: Colors.pinkAccent),
+    WheelSector(coins: 80, background: Colors.cyanAccent),
   ];
   return CustomizableWheel(
     sectors: sectors,
@@ -19,7 +19,7 @@ Widget showCustomWheel() {
     animationCurve: Curves.easeOutExpo,
     wheelPadding: EdgeInsets.symmetric(vertical: 189),
     onResult: (index) {
-      print("中奖扇区: $index, 参数是${sectors[index].toString()}");
+      print("中奖扇区: $index, 金币数量: ${sectors[index].coins}");
     },
   );
 }
@@ -66,6 +66,7 @@ class _CustomizableWheelState extends State<CustomizableWheel>
   late Animation<double> _animation;
   double _angle = 0;
   bool _spinning = false;
+  int _targetIndex = 0;
 
   @override
   void initState() {
@@ -84,18 +85,9 @@ class _CustomizableWheelState extends State<CustomizableWheel>
         setState(() {
           _spinning = false;
         });
-        final selectedIndex =
-            widget.sectors.length -
-            ((normalizeAngle(_angle) * widget.sectors.length / (2 * pi))
-                    .round()) %
-                widget.sectors.length;
-        widget.onResult?.call(selectedIndex % widget.sectors.length);
+        widget.onResult?.call(_targetIndex);
       }
     });
-  }
-
-  double normalizeAngle(double rad) {
-    return rad % (2 * pi);
   }
 
   @override
@@ -111,11 +103,20 @@ class _CustomizableWheelState extends State<CustomizableWheel>
     });
     final rand = Random();
     final rounds = rand.nextInt(6) + 6;
-    final targetIndex = rand.nextInt(widget.sectors.length);
+    _targetIndex = rand.nextInt(widget.sectors.length);
     final sectorAngle = 2 * pi / widget.sectors.length;
-    final toAngle =
-        _angle + 2 * pi * rounds + sectorAngle * targetIndex + sectorAngle / 2;
-    _animation = Tween<double>(begin: _angle, end: toAngle).animate(
+
+    // 计算目标角度：使指针指向目标扇形的中心
+    // 指针在顶部（-pi/2），扇形从0度开始
+    // 目标：转盘旋转后，目标扇形的中心对准顶部指针
+    // 扇形 i 的中心角度 = sectorAngle * (i + 0.5)
+    // 需要让这个中心角度转到 -pi/2（顶部）
+    // 所以旋转角度 = -pi/2 - sectorAngle * (targetIndex + 0.5)
+    // 但转盘是顺时针转的，所以角度是正值
+    final targetSectorCenter = sectorAngle * (_targetIndex + 0.5);
+    final stopAngle = 2 * pi * rounds + (pi / 2 - targetSectorCenter);
+
+    _animation = Tween<double>(begin: _angle, end: _angle + stopAngle).animate(
       CurvedAnimation(parent: _controller, curve: widget.animationCurve),
     );
     _controller.forward(from: 0);
@@ -130,42 +131,47 @@ class _CustomizableWheelState extends State<CustomizableWheel>
       child: Stack(
         alignment: Alignment.center,
         children: [
+          // 转盘
           Transform.rotate(
             angle: _angle,
             child: CustomPaint(
               size: Size(size, size),
-              painter: WheelPainter(widget.sectors),
+              painter: WheelPainter(widget.sectors, _angle),
             ),
           ),
-          // 指针组件（顶部居中）
+          // 顶部指针（固定不动）
           if (widget.pointerIcon != null)
-            Column(
-              children: [
-                Center(child: widget.pointerIcon)
-              ],
+            Positioned(
+              top: 0,
+              child: widget.pointerIcon!,
             )
           else
-            // Positioned(
-            //   top: 0,
-            //   child: Icon(
-            //     Icons.arrow_drop_down,
-            //     size: 48,
-            //     color: Colors.redAccent,
-            //   ),
-            // ),
-          // 中央的抽奖按钮
+          // 中央的抽奖按钮（带指针）
           Center(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(32),
-                backgroundColor: Colors.amber,
-              ),
-              onPressed: startSpin,
-              child: Text(
-                _spinning ? "抽奖中..." : "开始抽奖",
-                style: TextStyle(fontSize: 20),
-              ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // 按钮上方的指针（向下的三角形）
+                Transform.rotate(
+                  angle:  pi,
+                  child: CustomPaint(
+                    size: Size(20, 12),
+                    painter: _PointerPainter(Colors.amber),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.all(28),
+                    backgroundColor: Colors.amber,
+                  ),
+                  onPressed: startSpin,
+                  child: Text(
+                    "抽奖",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -176,7 +182,7 @@ class _CustomizableWheelState extends State<CustomizableWheel>
 
 class WheelSector {
   /// 中心内容，可以是 Text/Icon（高阶自定义可扩展为 Widget）
-  final Widget content;
+  final Widget? content;
 
   /// 扇区背景色
   final Color background;
@@ -187,35 +193,49 @@ class WheelSector {
   /// 扇区边框粗细
   final double borderWidth;
 
+  /// 金币数量
+  final int coins;
+
+  /// 金币图标颜色
+  final Color coinColor;
+
+  /// 金币数量文本颜色
+  final Color coinTextColor;
+
   WheelSector({
-    required this.content,
+    this.content,
     required this.background,
     this.borderColor = Colors.white,
     this.borderWidth = 2,
+    this.coins = 0,
+    this.coinColor = Colors.amber,
+    this.coinTextColor = Colors.white,
   });
 
   @override
   String toString() {
-    return 'WheelSector{content: $content, background: $background, borderColor: $borderColor, borderWidth: $borderWidth}';
+    return 'WheelSector{content: $content, background: $background, borderColor: $borderColor, borderWidth: $borderWidth, coins: $coins}';
   }
 }
 
 class WheelPainter extends CustomPainter {
   final List<WheelSector> sectors;
+  final double rotationAngle;
 
-  WheelPainter(this.sectors);
+  WheelPainter(this.sectors, this.rotationAngle);
 
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
     final radius = size.width / 2;
     final sectorAngle = 2 * pi / sectors.length;
-    final textRadius = radius * 0.7;
+    final textRadius = radius * 0.65;
 
     for (int i = 0; i < sectors.length; i++) {
+      final sector = sectors[i];
       // 背景
       final paint = Paint()
-        ..color = sectors[i].background
+        ..color = sector.background
         ..style = PaintingStyle.fill;
       canvas.drawArc(
         Rect.fromCircle(center: center, radius: radius),
@@ -225,11 +245,11 @@ class WheelPainter extends CustomPainter {
         paint,
       );
       // 边框
-      if (sectors[i].borderWidth > 0) {
+      if (sector.borderWidth > 0) {
         final borderPaint = Paint()
-          ..color = sectors[i].borderColor
+          ..color = sector.borderColor
           ..style = PaintingStyle.stroke
-          ..strokeWidth = sectors[i].borderWidth;
+          ..strokeWidth = sector.borderWidth;
         canvas.drawArc(
           Rect.fromCircle(center: center, radius: radius),
           sectorAngle * i,
@@ -238,29 +258,144 @@ class WheelPainter extends CustomPainter {
           borderPaint,
         );
       }
-      // 扇区内容
-      final angle = sectorAngle * (i + 0.5);
-      final builder = sectors[i].content;
-      // 将 Widget 转为图片并绘制（需用 toPicture/toImage，或用 overlays/Stack 方案，简化如下只支持 Text）
-      if (builder is Text) {
-        final textStyle =
-            builder.style ?? TextStyle(fontSize: 16, color: Colors.white);
-        final span = TextSpan(text: (builder.data ?? ""), style: textStyle);
-        final tp = TextPainter(
-          text: span,
-          textDirection: TextDirection.ltr,
-          textAlign: TextAlign.center,
+
+      // 扇区中心角度（基于转盘当前旋转角度计算实际角度）
+      final sectorCenterAngle = sectorAngle * (i + 0.5);
+      final actualAngle = sectorCenterAngle + rotationAngle;
+
+      // 扇区内容中心位置
+      final contentCenterX = center.dx + cos(sectorCenterAngle) * textRadius;
+      final contentCenterY = center.dy + sin(sectorCenterAngle) * textRadius;
+
+      // 绘制金币图标 + 数量
+      if (sector.coins > 0) {
+        _drawCoinWithText(
+          canvas,
+          Offset(contentCenterX, contentCenterY),
+          sector.coins,
+          actualAngle,
+          sector.coinColor,
+          sector.coinTextColor,
         );
-        tp.layout();
-        final dx = center.dx + cos(angle) * textRadius - tp.width / 2;
-        final dy = center.dy + sin(angle) * textRadius - tp.height / 2;
-        tp.paint(canvas, Offset(dx, dy));
-      } else {
-        // 你可以用 RenderRepaintBoundary 实现 Widget 绘制到 Canvas，高级部分略（常用的是只用 Text 或 Icon 简化）
+      } else if (sector.content != null) {
+        // 兼容原有 content 方式
+        final builder = sector.content;
+        if (builder is Text) {
+          canvas.save();
+          canvas.translate(contentCenterX, contentCenterY);
+          canvas.rotate(-actualAngle);
+
+          final textStyle =
+              builder.style ?? TextStyle(fontSize: 16, color: Colors.white);
+          final span = TextSpan(text: (builder.data ?? ""), style: textStyle);
+          final tp = TextPainter(
+            text: span,
+            textDirection: TextDirection.ltr,
+            textAlign: TextAlign.center,
+          );
+          tp.layout();
+          tp.paint(canvas, Offset(-tp.width / 2, -tp.height / 2));
+          canvas.restore();
+        }
       }
     }
   }
 
+  /// 绘制金币图标和数量文本（上下垂直排列，保持正立）
+  void _drawCoinWithText(
+    Canvas canvas,
+    Offset position,
+    int coins,
+    double rotationAngle,
+    Color coinColor,
+    Color textColor,
+  ) {
+    const double iconSize = 28;
+    const double spacing = 4;
+
+    // 绘制金币图标
+    final iconSpan = TextSpan(
+      text: '🪙',
+      style: TextStyle(fontSize: iconSize,color: Colors.yellow),
+    );
+    final iconPainter = TextPainter(
+      text: iconSpan,
+      textDirection: TextDirection.ltr,
+      textAlign: TextAlign.center,
+    );
+    iconPainter.layout();
+
+    // 绘制金币数量文本
+    final textSpan = TextSpan(
+      text: coins.toString(),
+      style: TextStyle(
+        fontSize: 16,
+        color: textColor,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+    final textPainter = TextPainter(
+      text: textSpan,
+      textDirection: TextDirection.ltr,
+      textAlign: TextAlign.center,
+    );
+    textPainter.layout();
+
+    // 保存画布状态
+    canvas.save();
+
+    // 移动到内容中心位置
+    canvas.translate(position.dx, position.dy);
+
+    // 旋转画布使文字保持正立（抵消转盘旋转角度）
+    canvas.rotate(-rotationAngle);
+
+    // 计算总高度（图标 + 间距 + 文字）
+    final totalHeight = iconPainter.height + spacing + textPainter.height;
+    final startY = -totalHeight / 2;
+
+    // 绘制金币图标（居中）
+    iconPainter.paint(
+      canvas,
+      Offset(-iconPainter.width / 2, startY),
+    );
+
+    // 绘制数量文本（居中）
+    textPainter.paint(
+      canvas,
+      Offset(-textPainter.width / 2, startY + iconPainter.height + spacing),
+    );
+
+    // 恢复画布状态
+    canvas.restore();
+  }
+
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+}
+
+/// 指针绘制器（绘制向下箭头，指向转盘边缘）
+class _PointerPainter extends CustomPainter {
+  final Color color;
+
+  _PointerPainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    final path = Path();
+    // 向下的三角形
+    path.moveTo(0, 0); // 左上角
+    path.lineTo(size.width, 0); // 右上角
+    path.lineTo(size.width / 2, size.height); // 底部顶点（向下）
+    path.close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
