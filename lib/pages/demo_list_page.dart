@@ -15,6 +15,7 @@ import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
 import 'package:first_flutter_demo/widget/clip/clip_test_demo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
 import 'package:first_flutter_demo/widget/container/container_demo.dart';
+import 'package:first_flutter_demo/widget/custompaint/custom_paint_partice.dart';
 import 'package:first_flutter_demo/widget/expansion/expansion_tile_demo.dart';
 import 'package:first_flutter_demo/widget/fitbox/fitted_box_demo.dart';
 import 'package:first_flutter_demo/widget/flex/FlexDemo.dart';
@@ -38,6 +39,12 @@ class DemoListPage extends StatelessWidget {
   const DemoListPage({super.key});
 
   static final List<DemoItem> demos = [
+    DemoItem(
+        title: '玩转flutter绘制',
+        description: 'Flutter绘制',
+        icon: Icons.format_paint,
+        builder: () => const CustomPaintPracticePage()
+    ),
     DemoItem(
       title: '淡入淡出动画',
       description: '演示Flutter的FadeTransition动画效果',
@@ -226,7 +233,7 @@ class DemoListPage extends StatelessWidget {
       description: '幸运大转盘',
       icon: Icons.pan_tool,
       builder: () => const CustomizableWheelDemo()
-    ),
+    )
   ];
 
   @override
