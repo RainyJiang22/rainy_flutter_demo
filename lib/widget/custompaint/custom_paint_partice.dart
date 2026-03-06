@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:first_flutter_demo/widget/custompaint/add_shape_painter.dart';
 import 'package:first_flutter_demo/widget/custompaint/arc_path_painter.dart';
+import 'package:first_flutter_demo/widget/custompaint/basic_text_painter.dart';
 import 'package:first_flutter_demo/widget/custompaint/bezier_curve_painter.dart';
+import 'package:first_flutter_demo/widget/custompaint/fill_rule_painter.dart';
 import 'package:first_flutter_demo/widget/custompaint/path_basic_painter.dart';
 import 'package:first_flutter_demo/widget/custompaint/path_relative_painter.dart';
 import 'package:first_flutter_demo/widget/custompaint/star_painter.dart';
@@ -20,7 +22,7 @@ class CustomPaintPracticePage extends StatelessWidget {
           width: 300,
           height: 300,
           color: Colors.grey[200],
-          child: CustomPaint(painter: StarPainter()),
+          child: CustomPaint(painter: BasicTextPainter()),
         ),
       ),
     );

@@ -44,7 +44,7 @@ class DemoListPage extends StatelessWidget {
         title: '玩转flutter绘制',
         description: 'Flutter绘制',
         icon: Icons.format_paint,
-        builder: () => const ArcProgressDemo()
+        builder: () => const CustomPaintPracticePage()
     ),
     DemoItem(
       title: '淡入淡出动画',
