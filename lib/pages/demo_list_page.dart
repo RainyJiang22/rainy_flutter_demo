@@ -12,6 +12,9 @@ import 'package:first_flutter_demo/state/box_state_demo.dart';
 import 'package:first_flutter_demo/state/state_test_demo.dart';
 import 'package:first_flutter_demo/widget/align/AlignDemo.dart';
 import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
+import 'package:first_flutter_demo/widget/animation/hero_animation_demo.dart';
+import 'package:first_flutter_demo/widget/animation/logo_animation.dart';
+import 'package:first_flutter_demo/widget/animation/logo_app_animation.dart';
 import 'package:first_flutter_demo/widget/clip/clip_test_demo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
 import 'package:first_flutter_demo/widget/container/container_demo.dart';
@@ -42,9 +45,9 @@ class DemoListPage extends StatelessWidget {
   static final List<DemoItem> demos = [
     DemoItem(
         title: '玩转flutter绘制',
-        description: 'Flutter绘制',
+        description: 'Flutte r绘制',
         icon: Icons.format_paint,
-        builder: () => const CustomPaintPracticePage()
+        builder: () => const HeroAnimation()
     ),
     DemoItem(
       title: '淡入淡出动画',

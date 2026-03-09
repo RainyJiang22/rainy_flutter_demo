@@ -12,6 +12,9 @@ class LogoAnimation extends StatefulWidget {
 class _LogoAnimationState extends State<LogoAnimation> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Placeholder(
+      color: Colors.yellow,
+      child: SizedBox(width: 10,height: 10),
+    );
   }
 }
