@@ -8,6 +8,8 @@ import 'package:first_flutter_demo/pages/stopwatch/stop_watch_app.dart';
 import 'package:first_flutter_demo/pages/stopwatch/stop_watch_page.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
+import 'package:first_flutter_demo/scroll/scroll_controller_test_route.dart';
+import 'package:first_flutter_demo/scroll/scroll_notification_test.dart';
 import 'package:first_flutter_demo/state/box_state_demo.dart';
 import 'package:first_flutter_demo/state/state_test_demo.dart';
 import 'package:first_flutter_demo/widget/align/AlignDemo.dart';
@@ -44,10 +46,12 @@ class DemoListPage extends StatelessWidget {
 
   static final List<DemoItem> demos = [
     DemoItem(
-        title: '玩转flutter绘制',
-        description: 'Flutte r绘制',
-        icon: Icons.format_paint,
-        builder: () => const HeroAnimation()
+      title: '玩转flutter绘制',
+      description: 'Flutte r绘制',
+      icon: Icons.format_paint,
+      builder: (() {
+        return ScrollNotificationTest();
+      })
     ),
     DemoItem(
       title: '淡入淡出动画',
@@ -236,8 +240,10 @@ class DemoListPage extends StatelessWidget {
       title: '大转盘demo',
       description: '幸运大转盘',
       icon: Icons.pan_tool,
-      builder: () => const CustomizableWheelDemo()
-    )
+      builder: (() {
+        return CustomizableWheelDemo();
+      }),
+    ),
   ];
 
   @override
