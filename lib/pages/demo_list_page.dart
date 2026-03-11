@@ -1,6 +1,8 @@
 import 'package:first_flutter_demo/lifecycle/LifecycleWatcher.dart';
 import 'package:first_flutter_demo/lifecycle/flutter_widget_lifecycle.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
+import 'package:first_flutter_demo/page/page_list_demo.dart';
+import 'package:first_flutter_demo/page/tab_view_route.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
 import 'package:first_flutter_demo/pages/launch_page.dart';
 import 'package:first_flutter_demo/pages/photo_app_page.dart';
@@ -46,8 +48,20 @@ class DemoListPage extends StatelessWidget {
 
   static final List<DemoItem> demos = [
     DemoItem(
+        title: 'TabBarView',
+        description: 'Flutter TabBarView',
+        icon: Icons.tab,
+        builder: () => TabViewRoute()
+    ),
+    DemoItem(
+        title: 'PageView页面缓存',
+        description: 'Flutter PageView',
+        icon: Icons.flutter_dash,
+        builder: () => PageViewDemo()
+    ),
+    DemoItem(
       title: '玩转flutter绘制',
-      description: 'Flutte r绘制',
+      description: 'Flutter绘制',
       icon: Icons.format_paint,
       builder: (() {
         return ScrollNotificationTest();
