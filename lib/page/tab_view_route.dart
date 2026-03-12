@@ -67,7 +67,7 @@ class TabViewRoute2 extends StatelessWidget {
             return KeepAliveWrapper(
               child: Container(
                 alignment: Alignment.center,
-                child: Text(e, textScaleFactor: 5),
+                child: Text(e, textScaler:TextScaler.linear(5.0)),
               ),
             );
           }).toList(),

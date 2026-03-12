@@ -1,6 +1,8 @@
 import 'package:first_flutter_demo/lifecycle/LifecycleWatcher.dart';
 import 'package:first_flutter_demo/lifecycle/flutter_widget_lifecycle.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
+import 'package:first_flutter_demo/page/custom_scroll_demo.dart';
+import 'package:first_flutter_demo/page/custom_sliver_demo.dart';
 import 'package:first_flutter_demo/page/page_list_demo.dart';
 import 'package:first_flutter_demo/page/tab_view_route.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
@@ -47,6 +49,12 @@ class DemoListPage extends StatelessWidget {
   const DemoListPage({super.key});
 
   static final List<DemoItem> demos = [
+    DemoItem(
+        title: 'CustomScroll',
+        description: 'Flutter CustomScroll',
+        icon: Icons.screen_lock_landscape,
+        builder: () => CustomSliverDemo()
+    ),
     DemoItem(
         title: 'TabBarView',
         description: 'Flutter TabBarView',
