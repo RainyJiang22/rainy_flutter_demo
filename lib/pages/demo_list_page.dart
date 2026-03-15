@@ -4,6 +4,7 @@ import 'package:first_flutter_demo/network/SampleNetwork.dart';
 import 'package:first_flutter_demo/page/custom_scroll_demo.dart';
 import 'package:first_flutter_demo/page/custom_sliver_demo.dart';
 import 'package:first_flutter_demo/page/page_list_demo.dart';
+import 'package:first_flutter_demo/page/presistent_header_route.dart';
 import 'package:first_flutter_demo/page/tab_view_route.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
 import 'package:first_flutter_demo/pages/launch_page.dart';
@@ -12,6 +13,7 @@ import 'package:first_flutter_demo/pages/stopwatch/stop_watch_app.dart';
 import 'package:first_flutter_demo/pages/stopwatch/stop_watch_page.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
+import 'package:first_flutter_demo/scroll/nested_tab_bar_demo.dart';
 import 'package:first_flutter_demo/scroll/scroll_controller_test_route.dart';
 import 'package:first_flutter_demo/scroll/scroll_notification_test.dart';
 import 'package:first_flutter_demo/state/box_state_demo.dart';
@@ -45,15 +47,23 @@ import 'package:flutter/material.dart';
 import 'package:first_flutter_demo/model/demo_item.dart';
 import 'package:first_flutter_demo/widget/animation/FadeAnimation.dart';
 
+import '../scroll/snap_app_bar_demo.dart';
+
 class DemoListPage extends StatelessWidget {
   const DemoListPage({super.key});
 
   static final List<DemoItem> demos = [
     DemoItem(
+        title: '嵌套可滚动组件',
+        description: 'Flutter NestedScrollView',
+        icon: Icons.snapchat,
+        builder: () => NestedTabBarDemo()
+    ),
+    DemoItem(
         title: 'CustomScroll',
         description: 'Flutter CustomScroll',
         icon: Icons.screen_lock_landscape,
-        builder: () => CustomSliverDemo()
+        builder: () => PresistentHeaderRoute()
     ),
     DemoItem(
         title: 'TabBarView',
