@@ -75,9 +75,10 @@ class _AddRecordPageState extends ConsumerState<AddRecordPage> {
             splits: _enableSplit ? _splits : null,
           );
 
-      // 刷新统计数据
+      // 强制刷新统计数据和记录列表
       ref.invalidate(todayStatisticsProvider);
       ref.invalidate(monthlyStatisticsProvider);
+      ref.invalidate(recordsProvider);
 
       if (mounted) {
         Navigator.pop(context);

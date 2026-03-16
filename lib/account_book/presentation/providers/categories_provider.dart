@@ -43,7 +43,7 @@ class CategoriesNotifier extends StateNotifier<CategoriesState> {
     // 初始化默认分类
     await _repository.initDefaultCategories();
     if (_bookId != null) {
-      await load(_bookId!);
+      await load(_bookId);
     }
   }
 

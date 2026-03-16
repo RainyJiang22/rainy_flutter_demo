@@ -69,9 +69,10 @@ class _QuickRecordSheetState extends ConsumerState<QuickRecordSheet> {
             note: _noteController.text.isNotEmpty ? _noteController.text : null,
           );
 
-      // 刷新统计数据
+      // 强制刷新统计数据和记录列表
       ref.invalidate(todayStatisticsProvider);
       ref.invalidate(monthlyStatisticsProvider);
+      ref.invalidate(recordsProvider);
 
       if (mounted) {
         Navigator.pop(context);

@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import '../../data/models/record.dart';
 import '../../data/repositories/record_repository.dart';
 import 'database_provider.dart';
