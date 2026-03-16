@@ -48,11 +48,18 @@ import 'package:first_flutter_demo/model/demo_item.dart';
 import 'package:first_flutter_demo/widget/animation/FadeAnimation.dart';
 
 import '../scroll/snap_app_bar_demo.dart';
+import '../account_book/account_book_app.dart';
 
 class DemoListPage extends StatelessWidget {
   const DemoListPage({super.key});
 
   static final List<DemoItem> demos = [
+    DemoItem(
+        title: '记账本',
+        description: '个人记账与项目分摊',
+        icon: Icons.account_balance_wallet,
+        builder: () => AccountBookApp()
+    ),
     DemoItem(
         title: '嵌套可滚动组件',
         description: 'Flutter NestedScrollView',
