@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class ThemeAppDemo extends StatelessWidget {
@@ -7,7 +5,10 @@ class ThemeAppDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const ThemeTestRoute(),
+    );
   }
 }
 
@@ -19,14 +20,12 @@ class ThemeTestRoute extends StatefulWidget {
 }
 
 class _ThemeTestRouteState extends State<ThemeTestRoute> {
-
   //当前主题色
   MaterialColor _themeColor = Colors.teal;
+
   @override
   Widget build(BuildContext context) {
-
     final themeData = Theme.of(context);
-
 
     return Theme(
       data: ThemeData(
@@ -66,20 +65,30 @@ class _ThemeTestRouteState extends State<ThemeTestRoute> {
               ),
             ),
             const SizedBox(height: 40),
+            NavBar(
+              color: _themeColor,
+              title: '自定义导航栏',
+            ),
+            const SizedBox(height: 20),
+            NavBar(
+               color: Colors.white,
+               title: '浅色导航栏',
+            )
           ],
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: _themeColor,
           onPressed: () {
             setState(() {
-              _themeColor = _themeColor == Colors.teal ? Colors.blue : Colors.teal;
+              _themeColor = _themeColor == Colors.teal
+                  ? Colors.blue
+                  : Colors.teal;
             });
           },
           child: const Icon(Icons.palette),
         ),
       ),
     );
-
   }
 }
 
@@ -92,8 +101,31 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      constraints: const BoxConstraints(
+        minHeight: 52,
+        minWidth: double.infinity
+      ),
+      decoration:BoxDecoration(
+        color: color,
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            offset: Offset(0,3),
+            blurRadius: 3
+          ),
+        ]
+      ),
+        child: Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            // 根据背景色亮度确定文字颜色
+            // computeLuminance返回0-1的值，越大颜色越浅
+            color: color.computeLuminance() < 0.5 ? Colors.white : Colors.black,
+          ),
+          textAlign: TextAlign.center,
+        )
+    );
   }
 }
-
-

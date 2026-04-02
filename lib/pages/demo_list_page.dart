@@ -18,6 +18,7 @@ import 'package:first_flutter_demo/scroll/scroll_controller_test_route.dart';
 import 'package:first_flutter_demo/scroll/scroll_notification_test.dart';
 import 'package:first_flutter_demo/state/box_state_demo.dart';
 import 'package:first_flutter_demo/state/state_test_demo.dart';
+import 'package:first_flutter_demo/theme/theme_app_demo.dart';
 import 'package:first_flutter_demo/widget/align/AlignDemo.dart';
 import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
 import 'package:first_flutter_demo/widget/animation/hero_animation_demo.dart';
@@ -56,6 +57,12 @@ class DemoListPage extends StatelessWidget {
   const DemoListPage({super.key});
 
   static final List<DemoItem> demos = [
+    DemoItem(
+        title: '主题',
+        description: '主题切换',
+        icon: Icons.theater_comedy_outlined,
+        builder: () => ThemeAppDemo()
+    ),
     DemoItem(
         title: '记账本',
         description: '个人记账与项目分摊',
