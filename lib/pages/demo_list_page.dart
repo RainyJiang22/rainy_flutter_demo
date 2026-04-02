@@ -46,9 +46,11 @@ import 'package:first_flutter_demo/widget/wheel/customizable_wheel.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_demo/model/demo_item.dart';
 import 'package:first_flutter_demo/widget/animation/FadeAnimation.dart';
+import 'package:first_flutter_demo/widget/animation/particle_explosion_demo.dart';
 
 import '../scroll/snap_app_bar_demo.dart';
 import '../account_book/account_book_app.dart';
+import '../widget/pop/share_data.dart';
 
 class DemoListPage extends StatelessWidget {
   const DemoListPage({super.key});
@@ -61,28 +63,28 @@ class DemoListPage extends StatelessWidget {
         builder: () => AccountBookApp()
     ),
     DemoItem(
-        title: '嵌套可滚动组件',
-        description: 'Flutter NestedScrollView',
-        icon: Icons.snapchat,
-        builder: () => NestedTabBarDemo()
+      title: '嵌套可滚动组件',
+      description: 'Flutter NestedScrollView',
+      icon: Icons.snapchat,
+      builder: () => NestedTabBarDemo(),
     ),
     DemoItem(
-        title: 'CustomScroll',
-        description: 'Flutter CustomScroll',
-        icon: Icons.screen_lock_landscape,
-        builder: () => PresistentHeaderRoute()
+      title: 'CustomScroll',
+      description: 'Flutter CustomScroll',
+      icon: Icons.screen_lock_landscape,
+      builder: () => PresistentHeaderRoute(),
     ),
     DemoItem(
-        title: 'TabBarView',
-        description: 'Flutter TabBarView',
-        icon: Icons.tab,
-        builder: () => TabViewRoute()
+      title: 'TabBarView',
+      description: 'Flutter TabBarView',
+      icon: Icons.tab,
+      builder: () => TabViewRoute(),
     ),
     DemoItem(
-        title: 'PageView页面缓存',
-        description: 'Flutter PageView',
-        icon: Icons.flutter_dash,
-        builder: () => PageViewDemo()
+      title: 'PageView页面缓存',
+      description: 'Flutter PageView',
+      icon: Icons.flutter_dash,
+      builder: () => PageViewDemo(),
     ),
     DemoItem(
       title: '玩转flutter绘制',
@@ -90,7 +92,7 @@ class DemoListPage extends StatelessWidget {
       icon: Icons.format_paint,
       builder: (() {
         return ScrollNotificationTest();
-      })
+      }),
     ),
     DemoItem(
       title: '淡入淡出动画',
@@ -104,6 +106,12 @@ class DemoListPage extends StatelessWidget {
       description: '演示Flutter的TransTransition动画效果',
       icon: Icons.animation,
       builder: () => const GestureDemo(),
+    ),
+    DemoItem(
+      title: '粒子爆炸效果',
+      description: '点击触发的CustomPainter粒子动画',
+      icon: Icons.auto_awesome,
+      builder: () => const ParticleExplosionDemo(),
     ),
     DemoItem(
       title: '文字',
