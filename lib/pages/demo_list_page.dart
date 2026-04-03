@@ -11,6 +11,7 @@ import 'package:first_flutter_demo/pages/launch_page.dart';
 import 'package:first_flutter_demo/pages/photo_app_page.dart';
 import 'package:first_flutter_demo/pages/stopwatch/stop_watch_app.dart';
 import 'package:first_flutter_demo/pages/stopwatch/stop_watch_page.dart';
+import 'package:first_flutter_demo/pages/valuelistenable/stream_builder_demo.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
 import 'package:first_flutter_demo/scroll/nested_tab_bar_demo.dart';
@@ -61,7 +62,7 @@ class DemoListPage extends StatelessWidget {
         title: '主题',
         description: '主题切换',
         icon: Icons.theater_comedy_outlined,
-        builder: () => ThemeAppDemo()
+        builder: () => StreamBuilderDemo()
     ),
     DemoItem(
         title: '记账本',
