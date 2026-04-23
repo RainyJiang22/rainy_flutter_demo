@@ -6,6 +6,7 @@ import 'package:first_flutter_demo/page/custom_sliver_demo.dart';
 import 'package:first_flutter_demo/page/page_list_demo.dart';
 import 'package:first_flutter_demo/page/presistent_header_route.dart';
 import 'package:first_flutter_demo/page/tab_view_route.dart';
+import 'package:first_flutter_demo/pages/dialog/dialog_app_demo.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
 import 'package:first_flutter_demo/pages/launch_page.dart';
 import 'package:first_flutter_demo/pages/photo_app_page.dart';
