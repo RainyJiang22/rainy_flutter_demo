@@ -1,36 +1,25 @@
-import 'package:first_flutter_demo/lifecycle/LifecycleWatcher.dart';
 import 'package:first_flutter_demo/lifecycle/flutter_widget_lifecycle.dart';
 import 'package:first_flutter_demo/network/SampleNetwork.dart';
-import 'package:first_flutter_demo/page/custom_scroll_demo.dart';
-import 'package:first_flutter_demo/page/custom_sliver_demo.dart';
 import 'package:first_flutter_demo/page/page_list_demo.dart';
 import 'package:first_flutter_demo/page/presistent_header_route.dart';
 import 'package:first_flutter_demo/page/tab_view_route.dart';
-import 'package:first_flutter_demo/pages/dialog/dialog_app_demo.dart';
+import 'package:first_flutter_demo/pages/chapter7/chapter7_exercises_page.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
 import 'package:first_flutter_demo/pages/launch_page.dart';
 import 'package:first_flutter_demo/pages/photo_app_page.dart';
 import 'package:first_flutter_demo/pages/stopwatch/stop_watch_app.dart';
-import 'package:first_flutter_demo/pages/stopwatch/stop_watch_page.dart';
 import 'package:first_flutter_demo/pages/valuelistenable/stream_builder_demo.dart';
 import 'package:first_flutter_demo/paint/Paper.dart';
 import 'package:first_flutter_demo/paint/SignDemo.dart';
 import 'package:first_flutter_demo/scroll/nested_tab_bar_demo.dart';
-import 'package:first_flutter_demo/scroll/scroll_controller_test_route.dart';
 import 'package:first_flutter_demo/scroll/scroll_notification_test.dart';
 import 'package:first_flutter_demo/state/box_state_demo.dart';
 import 'package:first_flutter_demo/state/state_test_demo.dart';
-import 'package:first_flutter_demo/theme/theme_app_demo.dart';
 import 'package:first_flutter_demo/widget/align/AlignDemo.dart';
 import 'package:first_flutter_demo/widget/animation/GestureDemo.dart';
-import 'package:first_flutter_demo/widget/animation/hero_animation_demo.dart';
-import 'package:first_flutter_demo/widget/animation/logo_animation.dart';
-import 'package:first_flutter_demo/widget/animation/logo_app_animation.dart';
 import 'package:first_flutter_demo/widget/clip/clip_test_demo.dart';
 import 'package:first_flutter_demo/widget/container/CustomContainer.dart';
 import 'package:first_flutter_demo/widget/container/container_demo.dart';
-import 'package:first_flutter_demo/widget/custompaint/arc_progress_demo.dart';
-import 'package:first_flutter_demo/widget/custompaint/custom_paint_partice.dart';
 import 'package:first_flutter_demo/widget/expansion/expansion_tile_demo.dart';
 import 'package:first_flutter_demo/widget/fitbox/fitted_box_demo.dart';
 import 'package:first_flutter_demo/widget/flex/FlexDemo.dart';
@@ -51,25 +40,29 @@ import 'package:first_flutter_demo/model/demo_item.dart';
 import 'package:first_flutter_demo/widget/animation/FadeAnimation.dart';
 import 'package:first_flutter_demo/widget/animation/particle_explosion_demo.dart';
 
-import '../scroll/snap_app_bar_demo.dart';
 import '../account_book/account_book_app.dart';
-import '../widget/pop/share_data.dart';
 
 class DemoListPage extends StatelessWidget {
   const DemoListPage({super.key});
 
   static final List<DemoItem> demos = [
     DemoItem(
-        title: '主题',
-        description: '主题切换',
-        icon: Icons.theater_comedy_outlined,
-        builder: () => StreamBuilderDemo()
+      title: '主题',
+      description: '主题切换',
+      icon: Icons.theater_comedy_outlined,
+      builder: () => StreamBuilderDemo(),
     ),
     DemoItem(
-        title: '记账本',
-        description: '个人记账与项目分摊',
-        icon: Icons.account_balance_wallet,
-        builder: () => AccountBookApp()
+      title: '第7章实战练习',
+      description: '根据 flutter-book-chapter7-summary 补齐的综合练习',
+      icon: Icons.menu_book_outlined,
+      builder: () => const Chapter7ExercisesPage(),
+    ),
+    DemoItem(
+      title: '记账本',
+      description: '个人记账与项目分摊',
+      icon: Icons.account_balance_wallet,
+      builder: () => AccountBookApp(),
     ),
     DemoItem(
       title: '嵌套可滚动组件',
@@ -78,6 +71,7 @@ class DemoListPage extends StatelessWidget {
       builder: () => NestedTabBarDemo(),
     ),
     DemoItem(
+
       title: 'CustomScroll',
       description: 'Flutter CustomScroll',
       icon: Icons.screen_lock_landscape,

@@ -1,30 +1,23 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:first_flutter_demo/pages/chapter7/chapter7_exercises_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:first_flutter_demo/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('opens chapter 7 exercise list', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('Flutter Demo 列表'), findsOneWidget);
+    expect(find.text('第7章实战练习'), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets('renders chapter 7 exercise list', (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: Chapter7ExercisesPage()));
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('购物车练习'), findsOneWidget);
+    expect(find.text('设置页面练习'), findsOneWidget);
+    expect(find.text('待办事项练习'), findsOneWidget);
+    expect(find.text('登录系统练习'), findsOneWidget);
   });
 }
