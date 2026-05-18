@@ -4,6 +4,7 @@ import 'package:first_flutter_demo/page/page_list_demo.dart';
 import 'package:first_flutter_demo/page/presistent_header_route.dart';
 import 'package:first_flutter_demo/page/tab_view_route.dart';
 import 'package:first_flutter_demo/pages/chapter7/chapter7_exercises_page.dart';
+import 'package:first_flutter_demo/pages/chapter8/chapter8_exercises_page.dart';
 import 'package:first_flutter_demo/pages/juejin/juejin_page_demo.dart';
 import 'package:first_flutter_demo/pages/launch_page.dart';
 import 'package:first_flutter_demo/pages/photo_app_page.dart';
@@ -51,6 +52,12 @@ class DemoListPage extends StatelessWidget {
       description: '主题切换',
       icon: Icons.theater_comedy_outlined,
       builder: () => StreamBuilderDemo(),
+    ),
+    DemoItem(
+      title: '第8章实战练习',
+      description: '根据 flutter-book-chapter8-summary 补齐的综合练习',
+      icon: Icons.menu_book_outlined,
+      builder: () => const Chapter8ExercisesPage(),
     ),
     DemoItem(
       title: '第7章实战练习',
