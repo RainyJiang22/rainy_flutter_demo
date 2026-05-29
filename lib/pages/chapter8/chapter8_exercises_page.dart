@@ -2,10 +2,13 @@ import 'package:first_flutter_demo/pages/chapter7/cart_exercise_page.dart';
 import 'package:first_flutter_demo/pages/chapter7/login_exercise_page.dart';
 import 'package:first_flutter_demo/pages/chapter7/settings_exercise_page.dart';
 import 'package:first_flutter_demo/pages/chapter7/todo_exercise_page.dart';
+import 'package:first_flutter_demo/pages/chapter8/event_bus_demo_app.dart';
 import 'package:first_flutter_demo/pages/chapter8/gesture_demo_app.dart';
 import 'package:first_flutter_demo/pages/chapter8/notification_demo_app.dart';
 import 'package:first_flutter_demo/pages/chapter8/pointer_demo_app.dart';
 import 'package:flutter/material.dart';
+
+import 'gesture_lab_app.dart';
 
 class Chapter8ExercisesPage extends StatelessWidget {
   const Chapter8ExercisesPage({super.key});
@@ -33,11 +36,18 @@ class Chapter8ExercisesPage extends StatelessWidget {
       builder: () => const NotificationDemoApp(),
     ),
     _ExerciseEntry(
-      title: '登录系统练习',
-      description: '表单校验、异步登录、会话展示、退出确认',
+      title: '事件总线',
+      description: '用单例 + 回调列表实现事件总线，思路没问题，但现代 Flutter 项目里更建议至少基于 StreamController.broadcast() 封装，生命周期更清楚',
       icon: Icons.lock_person,
       highlights: 'Form / Future / Dialog',
-      builder: () => const LoginExercisePage(),
+      builder: () => const EventBusDemoApp(),
+    ),
+    _ExerciseEntry(
+      title: 'Gesture Lab',
+      description: '事件实验室',
+      icon: Icons.eighteen_mp,
+      highlights: 'Form / Future / Dialog',
+      builder: () => const GestureLabApp(),
     ),
   ];
 
