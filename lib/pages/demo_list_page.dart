@@ -42,6 +42,7 @@ import 'package:first_flutter_demo/widget/animation/FadeAnimation.dart';
 import 'package:first_flutter_demo/widget/animation/particle_explosion_demo.dart';
 
 import '../account_book/account_book_app.dart';
+import 'chapter9/chapter9_exercises_page.dart';
 
 class DemoListPage extends StatelessWidget {
   const DemoListPage({super.key});
@@ -52,6 +53,12 @@ class DemoListPage extends StatelessWidget {
       description: '主题切换',
       icon: Icons.theater_comedy_outlined,
       builder: () => StreamBuilderDemo(),
+    ),
+    DemoItem(
+      title: '第9章实战练习',
+      description: '根据 flutter-book-chapter9-summary 补齐的综合练习',
+      icon: Icons.menu_book_outlined,
+      builder: () => const Chapter9ExercisesPage(),
     ),
     DemoItem(
       title: '第8章实战练习',
